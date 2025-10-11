@@ -1,41 +1,62 @@
-const year = document.getElementById('year');
-year.textContent = new Date().getFullYear();
+// мобильное меню
+const menuBtn = document.getElementById('menu');
+const nav = document.getElementById('nav');
+if (menuBtn) {
+  menuBtn.addEventListener('click', () => {
+    const open = getComputedStyle(nav).display !== 'none';
+    nav.style.display = open ? 'none' : 'flex';
+    menuBtn.setAttribute('aria-expanded', String(!open));
+  });
+}
 
+// год в подвале
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
+
+// форма
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 
-// Production API (Render)
+// ПРОД-API на вашем Render
 const API = 'https://telegram-lead-server-3zc1.onrender.com/submit';
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const payload = {
-    name: data.get('name')?.trim(),
-    email: data.get('email')?.trim(),
-    company: data.get('company')?.trim(),
-    budget: data.get('budget'),
-    message: data.get('message')?.trim(),
-  };
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const payload = {
+      name: (data.get('name') || '').trim(),
+      email: (data.get('email') || '').trim(),
+      company: (data.get('company') || '').trim(),
+      budget: data.get('budget'),
+      message: (data.get('message') || '').trim(),
+    };
 
-  const required = ['name','email','budget','message'];
-  for (const k of required) {
-    if (!payload[k]) {
-      note.textContent = 'Пожалуйста, заполните обязательные поля.';
-      return;
+    const required = ['name','email','budget','message'];
+    for (const k of required) {
+      if (!payload[k]) {
+        note.textContent = 'Пожалуйста, заполните обязательные поля.';
+        note.style.color = 'var(--danger)';
+        return;
+      }
     }
-  }
 
-  try {
-    const res = await fetch(API, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
-    });
-    if (!res.ok) throw new Error(await res.text());
-    note.textContent = 'Спасибо! Заявка отправлена в Telegram.';
-    form.reset();
-  } catch (err) {
-    note.textContent = 'Ошибка отправки. Попробуйте ещё раз.';
-  }
-});
+    note.textContent = 'Отправляем…';
+    note.style.color = 'var(--muted)';
+
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      note.textContent = 'Спасибо! Заявка отправлена в Telegram.';
+      note.style.color = 'var(--brand)';
+      form.reset();
+    } catch (err) {
+      note.textContent = 'Ошибка отправки. Попробуйте ещё раз.';
+      note.style.color = 'var(--danger)';
+    }
+  });
+}
