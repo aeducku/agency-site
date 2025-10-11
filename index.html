@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Агентство</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><h1>Агентство</h1></header>
+  <main>
+    <form id="contactForm" class="form">
+      <input name="name" placeholder="Имя" required>
+      <input name="email" placeholder="Email" required>
+      <input name="company" placeholder="Компания">
+      <select name="budget" required>
+        <option value="">Бюджет</option>
+        <option>до 1000</option>
+        <option>1000-3000</option>
+        <option>3000-7000</option>
+        <option>7000+</option>
+      </select>
+      <textarea name="message" placeholder="Сообщение" required></textarea>
+      <button type="submit">Отправить</button>
+      <p id="formNote"></p>
+    </form>
+  </main>
+  <footer>© <span id="year"></span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
