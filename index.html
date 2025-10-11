@@ -1,31 +1,162 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Агентство</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Agency — создаём сайты, которые продают</title>
+  <meta name="description" content="Агентство: сайты, лендинги, дизайн, SMM. Быстрые сроки и измеримый результат." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header><h1>Агентство</h1></header>
-  <main>
-    <form id="contactForm" class="form">
-      <input name="name" placeholder="Имя" required>
-      <input name="email" placeholder="Email" required>
-      <input name="company" placeholder="Компания">
-      <select name="budget" required>
-        <option value="">Бюджет</option>
-        <option>до 1000</option>
-        <option>1000-3000</option>
-        <option>3000-7000</option>
-        <option>7000+</option>
-      </select>
-      <textarea name="message" placeholder="Сообщение" required></textarea>
-      <button type="submit">Отправить</button>
-      <p id="formNote"></p>
-    </form>
-  </main>
-  <footer>© <span id="year"></span></footer>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__row">
+      <a class="logo" href="#top">Our<span>Agency</span></a>
+      <nav class="nav" id="nav">
+        <a href="#services">Услуги</a>
+        <a href="#work">Проекты</a>
+        <a href="#reviews">Отзывы</a>
+        <a class="btn btn--sm" href="#contact">Оставить заявку</a>
+      </nav>
+      <button class="burger" id="menu" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__left">
+        <h1>Сайты, которые <span class="grad">растят продажи</span></h1>
+        <p>Проектируем, запускаем, сопровождаем. От лендинга до e-commerce. Под ключ за 10–21 день.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#contact">Обсудить проект</a>
+          <a class="link" href="#work">Смотреть кейсы →</a>
+        </div>
+        <ul class="bullets">
+          <li>UX-аналитика и прототипы</li>
+          <li>Адаптивный дизайн и скорость 90+ PageSpeed</li>
+          <li>Интеграции: CRM, оплатa, Telegram</li>
+        </ul>
+      </div>
+      <div class="hero__card">
+        <div class="stat">
+          <span class="stat__num">120+</span>
+          <span class="stat__label">запусков</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">10–21</span>
+          <span class="stat__label">дней до релиза</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">4.9★</span>
+          <span class="stat__label">средняя оценка</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section__title">Что мы делаем</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Лендинги</h3>
+          <p>Быстрый запуск гипотез, A/B-тесты, сбор лидов в Telegram и CRM.</p>
+        </div>
+        <div class="card">
+          <h3>Корпоративные сайты</h3>
+          <p>Архитектура, SEO-структура, мультиязычность, высокая скорость.</p>
+        </div>
+        <div class="card">
+          <h3>Интернет-магазины</h3>
+          <p>Каталог, корзина, оплаты, интеграции: 1C, Kaspi, Payme и др.</p>
+        </div>
+        <div class="card">
+          <h3>Поддержка</h3>
+          <p>Ежемесячные улучшения, аналитика, проверки конверсии.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section" id="work">
+    <div class="container">
+      <h2 class="section__title">Недавние проекты</h2>
+      <div class="grid grid--work">
+        <article class="work">
+          <div class="work__thumb"></div>
+          <h4>FinTech SaaS</h4>
+          <p>Рост конверсии +38% после редизайна и улучшения скоростей.</p>
+        </article>
+        <article class="work">
+          <div class="work__thumb"></div>
+          <h4>Beauty e-commerce</h4>
+          <p>Полный интернет-магазин с оплатой и ПВЗ. 3 недели.</p>
+        </article>
+        <article class="work">
+          <div class="work__thumb"></div>
+          <h4>EdTech платформа</h4>
+          <p>Личный кабинет, прогрев, автоворонки, интеграции с Telegram.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <h2 class="section__title">Что говорят клиенты</h2>
+      <div class="grid">
+        <blockquote class="quote">«Сделали лендинг за 12 дней, лиды пошли сразу после запуска.» <span>— Мадина, маркетолог</span></blockquote>
+        <blockquote class="quote">«Команда сама предложила решения, мы просто утвердили. Очень комфортно.» <span>— Тимур, CEO</span></blockquote>
+        <blockquote class="quote">«PageSpeed 96/100 без костылей. Брали поддержку — довели SEO-ядро.» <span>— Анастасия, контент-менеджер</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--contrast" id="contact">
+    <div class="container">
+      <h2 class="section__title">Оставьте заявку — ответим в течение дня</h2>
+      <form id="contactForm" class="form">
+        <div class="form__row">
+          <input name="name" placeholder="Имя" required />
+          <input name="email" placeholder="Email" required />
+        </div>
+        <div class="form__row">
+          <input name="company" placeholder="Компания" />
+          <select name="budget" required>
+            <option value="">Бюджет</option>
+            <option>до 1000</option>
+            <option>1000-3000</option>
+            <option>3000-7000</option>
+            <option>7000+</option>
+          </select>
+        </div>
+        <textarea name="message" placeholder="Коротко о задаче" required></textarea>
+        <div class="form__actions">
+          <button class="btn" type="submit">Отправить</button>
+          <span id="formNote" class="note"></span>
+        </div>
+      </form>
+      <p class="micro">Нажимая «Отправить», вы соглашаетесь с обработкой персональных данных.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <span>© <span id="year"></span> OurAgency</span>
+      <a class="link" href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>
