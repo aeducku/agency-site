@@ -149,3 +149,34 @@ form?.addEventListener('submit', async (e) => {
     }
   });
 })();
+const SVCS={
+  design:{title:'Дизайн',desc:'Исследования, прототипы, дизайн-системы, UI-киты под разработку.',img:svcSVG('DESIGN','#111426','#00FFE0')},
+  dev:{title:'Разработка',desc:'Web/Mobile, API, интеграции, тесты, авто-деплой и мониторинг.',img:svcSVG('DEV','#10131a','#6C63FF')},
+  growth:{title:'Рост',desc:'Воронки, аналитика, A/B-тесты, оптимизация конверсии и LTV.',img:svcSVG('GROWTH','#10160f','#00FFB2')}
+};
+function svcSVG(label,bg,accent){
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+  <defs><radialGradient id='g' cx='65%' cy='25%'><stop offset='0%' stop-color='${accent}' stop-opacity='.22'/><stop offset='100%' stop-color='${bg}'/></radialGradient></defs>
+  <rect width='900' height='600' rx='28' fill='url(#g)'/>
+  <g font-family='Russo One' font-size='92' fill='#fff' text-anchor='middle'><text x='450' y='170' opacity='.95'>${label}</text></g>
+  <g transform='translate(120,240)' fill='${accent}' opacity='.18'>
+    <rect width='660' height='80' rx='16'/><rect y='100' width='660' height='80' rx='16' opacity='.16'/><rect y='200' width='660' height='80' rx='16' opacity='.14'/>
+  </g></svg>`;
+  return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);
+}
+function mountServices(){
+  const sec=document.querySelector('#services.services-tabs'); if(!sec) return;
+  const tabs=sec.querySelectorAll('.tab'), u=sec.querySelector('.underline');
+  const title=document.getElementById('svcTitle'), desc=document.getElementById('svcDesc'), img=document.getElementById('svcImg');
+  function set(key){
+    const btn=sec.querySelector(`.tab[data-key="${key}"]`);
+    tabs.forEach(b=>b.classList.toggle('is-active',b===btn));
+    const r=btn.getBoundingClientRect(), pr=btn.parentElement.getBoundingClientRect();
+    u.style.width=r.width+'px'; u.style.transform=`translateX(${r.left-pr.left}px)`;
+    const d=SVCS[key]; title.textContent=d.title; desc.textContent=d.desc; img.src=d.img;
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.key)));
+  window.addEventListener('resize',()=>{const a=sec.querySelector('.tab.is-active'); if(a) set(a.dataset.key);});
+  set('design');
+}
+document.addEventListener('DOMContentLoaded',mountServices);
