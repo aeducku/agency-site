@@ -192,22 +192,27 @@
 
 
 
-  <section id="services" class="section">
-    <div class="container cards">
-      <article class="card reveal">
-        <h3>Дизайн</h3>
-        <p class="muted">Исследования, прототипы, дизайн-системы, UI-киты под разработку.</p>
-      </article>
-      <article class="card reveal">
-        <h3>Разработка</h3>
-        <p class="muted">Web/Mobile, API, интеграции, тесты, авто-деплой и мониторинг.</p>
-      </article>
-      <article class="card reveal">
-        <h3>Рост</h3>
-        <p class="muted">Воронки, аналитика, A/B-тесты, оптимизация конверсии и LTV.</p>
-      </article>
+  <section id="services" class="section services-tabs">
+  <div class="container">
+    <div class="tabs">
+      <button class="tab is-active" data-key="design">Дизайн</button>
+      <button class="tab" data-key="dev">Разработка</button>
+      <button class="tab" data-key="growth">Рост</button>
+      <span class="underline"></span>
     </div>
-  </section>
+
+    <div class="services__grid">
+      <div class="services__text">
+        <h3 id="svcTitle">Дизайн</h3>
+        <p class="muted" id="svcDesc">Исследования, прототипы, дизайн-системы, UI-киты под разработку.</p>
+      </div>
+      <div class="services__art">
+        <img id="svcImg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
   <section id="work" class="section">
