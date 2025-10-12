@@ -149,34 +149,74 @@ form?.addEventListener('submit', async (e) => {
     }
   });
 })();
-const SVCS={
-  design:{title:'Дизайн',desc:'Исследования, прототипы, дизайн-системы, UI-киты под разработку.',img:svcSVG('DESIGN','#111426','#00FFE0')},
-  dev:{title:'Разработка',desc:'Web/Mobile, API, интеграции, тесты, авто-деплой и мониторинг.',img:svcSVG('DEV','#10131a','#6C63FF')},
-  growth:{title:'Рост',desc:'Воронки, аналитика, A/B-тесты, оптимизация конверсии и LTV.',img:svcSVG('GROWTH','#10160f','#00FFB2')}
-};
-function svcSVG(label,bg,accent){
-  const s=`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
-  <defs><radialGradient id='g' cx='65%' cy='25%'><stop offset='0%' stop-color='${accent}' stop-opacity='.22'/><stop offset='100%' stop-color='${bg}'/></radialGradient></defs>
-  <rect width='900' height='600' rx='28' fill='url(#g)'/>
-  <g font-family='Russo One' font-size='92' fill='#fff' text-anchor='middle'><text x='450' y='170' opacity='.95'>${label}</text></g>
-  <g transform='translate(120,240)' fill='${accent}' opacity='.18'>
-    <rect width='660' height='80' rx='16'/><rect y='100' width='660' height='80' rx='16' opacity='.16'/><rect y='200' width='660' height='80' rx='16' opacity='.14'/>
-  </g></svg>`;
-  return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);
-}
-function mountServices(){
-  const sec=document.querySelector('#services.services-tabs'); if(!sec) return;
-  const tabs=sec.querySelectorAll('.tab'), u=sec.querySelector('.underline');
-  const title=document.getElementById('svcTitle'), desc=document.getElementById('svcDesc'), img=document.getElementById('svcImg');
-  function set(key){
-    const btn=sec.querySelector(`.tab[data-key="${key}"]`);
-    tabs.forEach(b=>b.classList.toggle('is-active',b===btn));
-    const r=btn.getBoundingClientRect(), pr=btn.parentElement.getBoundingClientRect();
-    u.style.width=r.width+'px'; u.style.transform=`translateX(${r.left-pr.left}px)`;
-    const d=SVCS[key]; title.textContent=d.title; desc.textContent=d.desc; img.src=d.img;
+(function(){
+  const DATA = {
+    design: {
+      desc: "Research, prototypes, design systems and UI kits ready for dev.",
+      img: makeCardPhone("DESIGN", "#111014", "#f6b400")
+    },
+    dev: {
+      desc: "Web/Mobile apps, APIs, integrations, tests, CI/CD & monitoring.",
+      img: makeCardPhone("DEV", "#10131a", "#22d3ee")
+    },
+    growth: {
+      desc: "Funnels, analytics, A/B tests, conversion & LTV optimization.",
+      img: makeCardPhone("GROWTH", "#0f1210", "#22ea86")
+    }
+  };
+
+  function makeCardPhone(label,bg,accent){
+    const svg =
+`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='1800' viewBox='0 0 900 1800'>
+  <defs>
+    <radialGradient id='g' cx='65%' cy='25%'>
+      <stop offset='0%' stop-color='${accent}' stop-opacity='0.18'/>
+      <stop offset='100%' stop-color='${bg}'/>
+    </radialGradient>
+  </defs>
+  <rect x='30' y='30' rx='90' ry='90' width='840' height='1740' fill='url(#g)'
+        stroke='${accent}' stroke-opacity='.08' stroke-width='3'/>
+  <rect x='350' y='86' width='200' height='24' rx='12' fill='#000' opacity='.4'/>
+  <g font-family='Russo One' font-size='120' fill='#fff' text-anchor='middle'>
+    <text x='450' y='380' opacity='.92'>${label}</text>
+  </g>
+  <g transform='translate(120,540)'>
+    <rect width='660' height='220' rx='26' fill='${accent}' opacity='.16'/>
+    <rect y='260' width='660' height='220' rx='26' fill='${accent}' opacity='.14'/>
+    <rect y='520' width='660' height='220' rx='26' fill='${accent}' opacity='.12'/>
+    <rect y='780' width='660' height='220' rx='26' fill='${accent}' opacity='.10'/>
+  </g>
+</svg>`;
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
-  tabs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.key)));
-  window.addEventListener('resize',()=>{const a=sec.querySelector('.tab.is-active'); if(a) set(a.dataset.key);});
-  set('design');
-}
-document.addEventListener('DOMContentLoaded',mountServices);
+
+  const sec = document.querySelector('#services.hero-like');
+  if(!sec) return;
+
+  const tabs = sec.querySelector('#svcTabs') || sec.querySelector('.tabs');
+  const underline = sec.querySelector('#svcUnderline') || sec.querySelector('.underline');
+  const descEl = sec.querySelector('#svcDesc');
+  const imgEl  = sec.querySelector('#svcPhone');
+
+  function setActive(key){
+    descEl.textContent = DATA[key].desc;
+    imgEl.src = DATA[key].img;
+    sec.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.key===key));
+    const active = sec.querySelector('.tab.active');
+    const r = active.getBoundingClientRect();
+    const pr = tabs.getBoundingClientRect();
+    underline.style.width = r.width + 'px';
+    underline.style.transform = `translateX(${r.left - pr.left}px)`;
+  }
+
+  tabs.addEventListener('click', e=>{
+    const el = e.target.closest('.tab'); if(!el) return;
+    setActive(el.dataset.key);
+  });
+
+  window.addEventListener('resize', ()=> {
+    const a = sec.querySelector('.tab.active'); if(a) setActive(a.dataset.key);
+  });
+
+  setActive('design');
+})();
