@@ -1,162 +1,179 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="auto">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Agency — создаём сайты, которые продают</title>
-  <meta name="description" content="Агентство: сайты, лендинги, дизайн, SMM. Быстрые сроки и измеримый результат." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevGo — Digital Agency</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- Header -->
+<body class="page">
+
   <header class="header">
-    <div class="container header__row">
-      <a class="logo" href="#top">Our<span>Agency</span></a>
-      <nav class="nav" id="nav">
-        <a href="#services">Услуги</a>
-        <a href="#work">Проекты</a>
-        <a href="#reviews">Отзывы</a>
-        <a class="btn btn--sm" href="#contact">Оставить заявку</a>
+    <div class="container header__inner">
+      <a class="brand" href="#top" id="top">DEVGO</a>
+      <nav class="nav">
+        <a data-scroll="#services">Услуги</a>
+        <a data-scroll="#work">Проекты</a>
+        <a data-scroll="#about">О нас</a>
+        <a data-scroll="#contact" class="btn btn--ghost">Связаться</a>
       </nav>
-      <button class="burger" id="menu" aria-label="Меню" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
+
+  <section class="hero hero--enver">
+    <canvas class="bg-canvas" id="code-bg" aria-hidden="true"></canvas>
+
+    <div class="code-chips" aria-hidden="true">
+      <span class="chip">{ fetch('/submit') }</span>
+      <span class="chip">const api = '/submit'</span>
+      <span class="chip">&lt;Button /&gt;</span>
+      <span class="chip">async function lead(d){...}</span>
+    </div>
+
     <div class="container hero__grid">
-      <div class="hero__left">
-        <h1>Сайты, которые <span class="grad">растят продажи</span></h1>
-        <p>Проектируем, запускаем, сопровождаем. От лендинга до e-commerce. Под ключ за 10–21 день.</p>
-        <div class="hero__cta">
-          <a class="btn" href="#contact">Обсудить проект</a>
-          <a class="link" href="#work">Смотреть кейсы →</a>
-        </div>
+      <div class="hero__content reveal">
+        <h1 class="hero__title">Build Your<br>Awesome<br>Platform</h1>
+        <p class="hero__lead">
+          DevGo — digital-студия. Делаем UX-исследования, дизайн-системы и разработку.
+          Доставляем результат метриками и ростом.
+        </p>
+        <a class="btn btn--violet" data-scroll="#services">
+          Our Services
+          <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="hero__art reveal">
+        <figure class="enver-card" aria-label="Hero image">
+          <img src="https://images.unsplash.com/photo-1603415526960-f7e0328d13b1?q=80&w=1280&auto=format&fit=crop" alt="">
+          <div class="enver-card__frame"></div>
+          <span class="shape shape--zig1"></span>
+          <span class="shape shape--zig2"></span>
+          <span class="shape shape--plus"></span>
+          <span class="shape shape--triangle"></span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="section">
+    <div class="container grid-2 gap-xl">
+      <div class="reveal">
+        <h2 class="section-title">Почему DevGo — лучший выбор?</h2>
+        <p class="muted">10+ лет, десятки релизов, прозрачные бюджеты и метрики. Проектируем из бизнес-целей.</p>
         <ul class="bullets">
-          <li>UX-аналитика и прототипы</li>
-          <li>Адаптивный дизайн и скорость 90+ PageSpeed</li>
-          <li>Интеграции: CRM, оплатa, Telegram</li>
+          <li>UX-исследования, дизайн-системы, UI-киты</li>
+          <li>React/Next, FastAPI, PostgreSQL, CI/CD</li>
+          <li>Аналитика, A/B-тесты, рост конверсии</li>
         </ul>
       </div>
-      <div class="hero__card">
-        <div class="stat">
-          <span class="stat__num">120+</span>
-          <span class="stat__label">запусков</span>
+      <div class="video reveal" aria-label="Showreel">
+        <button class="play" aria-label="Play">▶</button>
+        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1200&auto=format&fit=crop" alt="">
+      </div>
+    </div>
+  </section>
+
+
+  <section id="services" class="section">
+    <div class="container cards">
+      <article class="card reveal">
+        <h3>Дизайн</h3>
+        <p class="muted">Исследования, прототипы, дизайн-системы, UI-киты под разработку.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Разработка</h3>
+        <p class="muted">Web/Mobile, API, интеграции, тесты, авто-деплой и мониторинг.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Рост</h3>
+        <p class="muted">Воронки, аналитика, A/B-тесты, оптимизация конверсии и LTV.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <section id="work" class="section">
+    <div class="container work">
+      <div class="work__card reveal">
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="work__meta">
+          <h3>CRM-платформа</h3>
+          <p class="muted">Редизайн, новая воронка, +28% к конверсии за 6 недель.</p>
         </div>
-        <div class="stat">
-          <span class="stat__num">10–21</span>
-          <span class="stat__label">дней до релиза</span>
-        </div>
-        <div class="stat">
-          <span class="stat__num">4.9★</span>
-          <span class="stat__label">средняя оценка</span>
+      </div>
+      <div class="work__card reveal">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="work__meta">
+          <h3>Маркетплейс</h3>
+          <p class="muted">Оптимизация каталога и мобильного чекаута.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <div class="container">
-      <h2 class="section__title">Что мы делаем</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Лендинги</h3>
-          <p>Быстрый запуск гипотез, A/B-тесты, сбор лидов в Telegram и CRM.</p>
-        </div>
-        <div class="card">
-          <h3>Корпоративные сайты</h3>
-          <p>Архитектура, SEO-структура, мультиязычность, высокая скорость.</p>
-        </div>
-        <div class="card">
-          <h3>Интернет-магазины</h3>
-          <p>Каталог, корзина, оплаты, интеграции: 1C, Kaspi, Payme и др.</p>
-        </div>
-        <div class="card">
-          <h3>Поддержка</h3>
-          <p>Ежемесячные улучшения, аналитика, проверки конверсии.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Work -->
-  <section class="section" id="work">
-    <div class="container">
-      <h2 class="section__title">Недавние проекты</h2>
-      <div class="grid grid--work">
-        <article class="work">
-          <div class="work__thumb"></div>
-          <h4>FinTech SaaS</h4>
-          <p>Рост конверсии +38% после редизайна и улучшения скоростей.</p>
-        </article>
-        <article class="work">
-          <div class="work__thumb"></div>
-          <h4>Beauty e-commerce</h4>
-          <p>Полный интернет-магазин с оплатой и ПВЗ. 3 недели.</p>
-        </article>
-        <article class="work">
-          <div class="work__thumb"></div>
-          <h4>EdTech платформа</h4>
-          <p>Личный кабинет, прогрев, автоворонки, интеграции с Telegram.</p>
-        </article>
+  <section id="contact" class="section">
+    <div class="container contact">
+      <div class="reveal">
+        <h2 class="section-title">Расскажите о задаче</h2>
+        <p class="muted">Ответим в течение рабочего часа. Чем подробнее контекст — тем точнее старт.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Reviews -->
-  <section class="section" id="reviews">
-    <div class="container">
-      <h2 class="section__title">Что говорят клиенты</h2>
-      <div class="grid">
-        <blockquote class="quote">«Сделали лендинг за 12 дней, лиды пошли сразу после запуска.» <span>— Мадина, маркетолог</span></blockquote>
-        <blockquote class="quote">«Команда сама предложила решения, мы просто утвердили. Очень комфортно.» <span>— Тимур, CEO</span></blockquote>
-        <blockquote class="quote">«PageSpeed 96/100 без костылей. Брали поддержку — довели SEO-ядро.» <span>— Анастасия, контент-менеджер</span></blockquote>
-      </div>
-    </div>
-  </section>
+      <form id="contactForm" class="form form--brand reveal" novalidate>
+        <div class="grid-2 gap-m">
+          <label class="field">
+            <span class="field__label">Имя</span>
+            <input class="input" type="text" name="name" placeholder="Ваше имя" required>
+          </label>
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input class="input" type="email" name="email" placeholder="you@company.com" required>
+          </label>
+        </div>
 
-  <!-- Contact -->
-  <section class="section section--contrast" id="contact">
-    <div class="container">
-      <h2 class="section__title">Оставьте заявку — ответим в течение дня</h2>
-      <form id="contactForm" class="form">
-        <div class="form__row">
-          <input name="name" placeholder="Имя" required />
-          <input name="email" placeholder="Email" required />
+        <div class="grid-2 gap-m">
+          <label class="field">
+            <span class="field__label">Компания</span>
+            <input class="input" type="text" name="company" placeholder="Название компании">
+          </label>
+          <label class="field">
+            <span class="field__label">Бюджет</span>
+            <select class="input select" name="budget" required>
+              <option value="до 3000">0–3k som</option>
+              <option value="3000–7000">3k–7k som</option>
+              <option value="7000+">7000+ som</option>
+            </select>
+          </label>
         </div>
-        <div class="form__row">
-          <input name="company" placeholder="Компания" />
-          <select name="budget" required>
-            <option value="">Бюджет</option>
-            <option>до 1000</option>
-            <option>1000-3000</option>
-            <option>3000-7000</option>
-            <option>7000+</option>
-          </select>
-        </div>
-        <textarea name="message" placeholder="Коротко о задаче" required></textarea>
-        <div class="form__actions">
-          <button class="btn" type="submit">Отправить</button>
-          <span id="formNote" class="note"></span>
+
+        <label class="field">
+          <span class="field__label">Сообщение</span>
+          <textarea class="input textarea" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
+        </label>
+
+        <div class="form__footer">
+          <button class="btn btn--brand" type="submit">Отправить</button>
+          <span id="formNote" class="note" role="status" aria-live="polite"></span>
         </div>
       </form>
-      <p class="micro">Нажимая «Отправить», вы соглашаетесь с обработкой персональных данных.</p>
     </div>
   </section>
 
+
   <footer class="footer">
-    <div class="container footer__row">
-      <span>© <span id="year"></span> OurAgency</span>
-      <a class="link" href="#top">Наверх ↑</a>
+    <div class="container footer__inner">
+      <div>© <span id="year"></span> DevGo Studio</div>
+      <a class="link" data-scroll="#top">Наверх ↑</a>
     </div>
   </footer>
-
-  <script src="app.js"></script>
+  <script src = 'app.js' ></script>
 </body>
 </html>
