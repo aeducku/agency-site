@@ -10,9 +10,6 @@
   --radius:16px; --radius-lg:22px;
 }
 
-#t1{
-  padding-right: 10px;
-}
 *{ box-sizing:border-box; }
 body.page{ margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto; color:var(--text); background:#0E1224; }
 img{ max-width:100%; display:block; }
@@ -81,6 +78,7 @@ a{ color:inherit; text-decoration:none; }
   font-family:'Russo One', sans-serif; letter-spacing:.18em; font-size:18px; text-transform:uppercase;
   background:linear-gradient(45deg,var(--aqua),var(--price));
   -webkit-background-clip:text; background-clip:text; color:transparent;
+  padding-right: 10px;
 }
 .nav{ display:flex; gap:20px; align-items: center; }
 .nav a{ color:#D6DBEA; }
